@@ -30,7 +30,7 @@
         class="h-7 w-7 flex items-center justify-center rounded-md hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
       >
         <Icon class="text-xs" name='i-lucide-circle-stop' />
-    </button>
+      </button>
       <button
         @click="exitApp"
         title="Exit"
