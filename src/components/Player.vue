@@ -74,7 +74,7 @@ onMounted(() => {
     sound.value.play();
   }
 
-  emitter.on("stopAll", () => {
+  emitter.on("stop", () => {
     sound.value.stop();
     sliderValue.value = [0];
   });
