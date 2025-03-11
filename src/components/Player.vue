@@ -78,6 +78,14 @@ onMounted(() => {
     sound.value.stop();
     sliderValue.value = [0];
   });
+
+  emitter.on("pause", () => {
+    sound.value.pause();
+  });
+
+  emitter.on("play", () => {
+    sound.value.play();
+  });
 });
 
 onUnmounted(() => {

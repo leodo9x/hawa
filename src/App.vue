@@ -18,6 +18,13 @@
         <GithubIcon class="h-4 w-4 text-gray-500" />
       </a>
       <button
+        @click="toggle"
+        title="Pause/Play"
+        class="h-7 w-7 flex items-center justify-center rounded-md hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+      >
+        <Icon class="text-xs" :name="isPlaying ? 'i-lucide-pause' : 'i-lucide-play'" />
+      </button>
+      <button
         @click="stopAll"
         title="Stop All"
         class="h-7 w-7 flex items-center justify-center rounded-md hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
@@ -35,7 +42,7 @@
   </main>
 </template>
 <script setup>
-import { inject } from "vue";
+import { inject, ref } from "vue";
 import { exit } from "@tauri-apps/api/process";
 import { platform } from '@tauri-apps/api/os';
 import Icon from "./components/Icon.vue";
@@ -79,6 +86,7 @@ const sounds = [
     src: "/sounds/forest.mp3",
   },
 ];
+const isPlaying = ref(true);
 
 const exitApp = async () => {
   await exit(1);
@@ -86,6 +94,11 @@ const exitApp = async () => {
 
 const stopAll = () => {
   emitter.emit("stopAll");
+};
+
+const toggle = () => {
+  isPlaying.value = !isPlaying.value;
+  emitter.emit(isPlaying.value ? "play" : "pause");
 };
 
 const setupOs = async () => {
