@@ -19,7 +19,7 @@
       </a>
       <button
         @click="toggle"
-        title="Pause/Play"
+        :title="isPlaying ? 'Pause' : 'Play'"
         class="h-7 w-7 flex items-center justify-center rounded-md hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
       >
         <Icon class="text-xs" :name="isPlaying ? 'i-lucide-pause' : 'i-lucide-play'" />
