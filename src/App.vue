@@ -42,11 +42,11 @@
   </main>
 </template>
 <script setup>
-import { inject, ref } from "vue";
+import { platform } from "@tauri-apps/api/os";
 import { exit } from "@tauri-apps/api/process";
-import { platform } from '@tauri-apps/api/os';
-import Icon from "./components/Icon.vue";
+import { inject, ref } from "vue";
 import GithubIcon from "./components/GithubIcon.vue";
+import Icon from "./components/Icon.vue";
 import Player from "./components/Player.vue";
 const emitter = inject("emitter");
 const sounds = [

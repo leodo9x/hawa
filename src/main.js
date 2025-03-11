@@ -1,10 +1,10 @@
 import { createApp } from "vue";
 import "./styles.css";
+import mitt from "mitt";
 import App from "./App.vue";
-import mitt from 'mitt'
 
 const emitter = mitt();
 
 const app = createApp(App);
-app.provide('emitter', emitter);
-app.mount('#app');
+app.provide("emitter", emitter);
+app.mount("#app");

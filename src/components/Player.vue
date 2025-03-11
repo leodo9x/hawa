@@ -22,11 +22,11 @@
   </div>
 </template>
 <script setup>
-import { onMounted, onUnmounted, ref, watch, computed } from "vue";
 import { Howl } from "howler";
-import Icon from "./Icon.vue";
 import { SliderRange, SliderRoot, SliderThumb, SliderTrack } from "radix-vue";
+import { computed, onMounted, onUnmounted, ref, watch } from "vue";
 import { inject } from "vue";
+import Icon from "./Icon.vue";
 
 const props = defineProps({
   src: {
