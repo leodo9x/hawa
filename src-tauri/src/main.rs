@@ -6,6 +6,9 @@
 use tauri::{CustomMenuItem, Manager, SystemTray, SystemTrayEvent, SystemTrayMenu};
 use tauri_plugin_positioner::{Position, WindowExt};
 
+#[cfg(target_os = "macos")]
+use tauri::{ActivationPolicy};
+
 fn main() {
     let mut system_tray_menu = SystemTrayMenu::new();
 
@@ -18,6 +21,11 @@ fn main() {
     system_tray_menu = system_tray_menu.clone().add_item(quit);
 
     tauri::Builder::default()
+        .setup(|app| {
+            #[cfg(target_os = "macos")]
+            app.set_activation_policy(ActivationPolicy::Accessory);
+            Ok(())
+        })
         .plugin(tauri_plugin_positioner::init())
         .system_tray(SystemTray::new().with_menu(system_tray_menu))
         .on_system_tray_event(|app, event| {
